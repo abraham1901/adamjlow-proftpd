@@ -25,62 +25,62 @@ ModuleControlsACLs lsmod allow user *
 Include /etc/proftpd/mods-enabled/
 
 # Set off to disable IPv6 support which is annoying on IPv4 only boxes.
-UseIPv6				<%= use_ipv6 %>
+UseIPv6				<%= @use_ipv6 %>
 # If set on you can experience a longer connection delay in many cases.
-IdentLookups			<%= ident_lookups %>
+IdentLookups			<%= @ident_lookups %>
 
-ServerName        "<%= server_name %>"
-ServerType		  	<%= server_type %>
-DeferWelcome			<%= defer_welcome %>
+ServerName        "<%= @server_name %>"
+ServerType		  	<%= @server_type %>
+DeferWelcome			<%= @defer_welcome %>
 
-MultilineRFC2228  <%= multiline_rfc2228 %>
-DefaultServer			<%= default_server %>
-ShowSymlinks			<%= show_symlinks %>
+MultilineRFC2228  <%= @multiline_rfc2228 %>
+DefaultServer			<%= @default_server %>
+ShowSymlinks			<%= @show_symlinks %>
 
-TimeoutNoTransfer	<%= timeout_notransfer %>
-TimeoutStalled		<%= timeout_stalled %>
-TimeoutIdle			  <%= timeout_idle %>
+TimeoutNoTransfer	<%= @timeout_notransfer %>
+TimeoutStalled		<%= @timeout_stalled %>
+TimeoutIdle			  <%= @timeout_idle %>
 
-DisplayLogin      <%= display_login %>
-DisplayChdir      <%= display_chdir %>
-ListOptions       "<%= list_options %>"
+DisplayLogin      <%= @display_login %>
+DisplayChdir      <%= @display_chdir %>
+ListOptions       "<%= @list_options %>"
 
-DenyFilter			  <%= deny_filter %>
+DenyFilter			  <%= @deny_filter %>
 
 # Use this to jail all users in their homes
-<% if default_root -%>
-DefaultRoot       <%= default_root %>
+<% if @default_root -%>
+DefaultRoot       <%= @default_root %>
 <% else -%>
 # DefaultRoot			~
 <% end -%>
 
 # Users require a valid shell listed in /etc/shells to login.
 # Use this directive to release that constrain.
-<% if require_valid_shell == 'false' -%>
+<% if @require_valid_shell == 'false' -%>
 RequireValidShell off
 <% else -%>
 # RequireValidShell		off
 <% end -%>
 
 # Port 21 is the standard FTP port.
-Port				      <%= port %>
+Port				      <%= @port %>
 
 # In some cases you have to specify passive ports range to by-pass
 # firewall limitations. Ephemeral ports can be used for that, but
 # feel free to use a more narrow range.
-<% if passive_ports == :undef -%>
+<% if @passive_ports == false -%>
 # PassivePorts    49152 65534
 <% else -%>
-PassivePorts      <%= passive_ports %>
+PassivePorts      <%= @passive_ports %>
 <% end -%>
 
 # If your host was NATted, this option is useful in order to
 # allow passive tranfers to work. You have to use your public
 # address and opening the passive ports used on your firewall as well.
-<% if masquerade_address == :undef -%>
+<% if @masquerade_address == false -%>
 # MasqueradeAddress		1.2.3.4
 <% else -%>
-MasqueradeAddress	<%= masquerade_address %>
+MasqueradeAddress	<%= @masquerade_address %>
 <% end -%>
 
 # This is useful for masquerading address with dynamic IPs:
@@ -95,17 +95,17 @@ MasqueradeAddress	<%= masquerade_address %>
 # in standalone mode, in inetd mode you should use an inetd server
 # that allows you to limit maximum number of processes per service
 # (such as xinetd)
-MaxInstances			<%= max_instances %>
+MaxInstances			<%= @max_instances %>
 
 # Set the user and group that the server normally runs at.
-User				      <%= user %>
-Group				      <%= group %>
+User				      <%= @user %>
+Group				      <%= @group %>
 
 # Umask 022 is a good standard umask to prevent new files and dirs
 # (second parm) from being group and world writable.
-Umask				      <%= umask %>
+Umask				      <%= @umask %>
 # Normally, we want files to be overwriteable.
-AllowOverwrite		<%= allow_overwrite %>
+AllowOverwrite		<%= @allow_overwrite %>
 
 # Uncomment this if you are using NIS or LDAP via NSS to retrieve passwords:
 # PersistentPasswd		off
@@ -119,8 +119,8 @@ AllowOverwrite		<%= allow_overwrite %>
 #
 # UseSendFile			off
 
-TransferLog       <%= transfer_log %>
-SystemLog         <%= system_log %>
+TransferLog       <%= @transfer_log %>
+SystemLog         <%= @system_log %>
 
 # Logging onto /var/log/lastlog is enabled but set to off by default
 #UseLastlog       on

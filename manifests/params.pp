@@ -42,6 +42,9 @@ class proftpd::params {
   $sql_dbname           = 'dbname'
   $sql_username         = 'dbusername'
   $sql_password         = 'dbpassword'
+  $sql_auth_types       = 'Backend Crypt OpenSSL SHA1 MD5'
+  $sql_min_user_gid     = false
+  $sql_min_user_uid     = false
   $sql_cfg_append       = false
 
   $tls_engine           = 'off'
@@ -61,8 +64,8 @@ class proftpd::params {
   $ldap_binddn          = '"cn=admin,dc=example,dc=com" "admin_password"'
   $ldap_users           = 'dc=users,dc=example,dc=com (uid=%u) (uidNumber=%u)'
 
-  $passive_port         = undef
-  $masquerade_address   = undef
+  $passive_ports        = false
+  $masquerade_address   = false
 
   $modules                = {
     'ctrls_admin'         => true,

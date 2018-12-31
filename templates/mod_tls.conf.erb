@@ -7,9 +7,9 @@
 #
 
 <IfModule mod_tls.c>
-TLSEngine <%= tls_engine %>
-TLSLog <%= tls_log %>
-TLSProtocol <%= tls_protocol %>
+TLSEngine <%= @tls_engine %>
+TLSLog <%= @tls_log %>
+TLSProtocol <%= @tls_protocol %>
 
 # Server SSL certificate. You can generate a self-signed certificate using 
 # a command like:
@@ -24,11 +24,11 @@ TLSProtocol <%= tls_protocol %>
 # chmod 0600 /etc/ssl/private/proftpd.key 
 # chmod 0640 /etc/ssl/private/proftpd.key
 # 
-TLSRSACertificateFile <%= tls_rsacertfile %>
-TLSRSACertificateKeyFile <%= tls_rsacertkey %>
+TLSRSACertificateFile <%= @tls_rsacertfile %>
+TLSRSACertificateKeyFile <%= @tls_rsacertkey %>
 #
 # CA the server trusts...
-TLSCACertificateFile <%= tls_cacertfile %>
+TLSCACertificateFile <%= @tls_cacertfile %>
 # ...or avoid CA cert and be verbose
 #TLSOptions                      NoCertRequest EnableDiags 
 # ... or the same with relaxed session use for some clients (e.g. FireFtp)
@@ -39,15 +39,15 @@ TLSCACertificateFile <%= tls_cacertfile %>
 # This is a fix for CVE-2009-3555 but could break some clients.
 #
 #TLSOptions 							AllowClientRenegotiations
-TLSOptions <%= tls_options %>
+TLSOptions <%= @tls_options %>
 #
 # Authenticate clients that want to use FTP over TLS?
 #
-TLSVerifyClient <%= tls_verifyclient %>
+TLSVerifyClient <%= @tls_verifyclient %>
 #
 # Are clients required to use FTP over TLS when talking to this server?
 #
-TLSRequired <%= tls_required %>
+TLSRequired <%= @tls_required %>
 #
 # Allow SSL/TLS renegotiations when the client requests them, but
 # do not force the renegotations.  Some clients do not support
@@ -55,6 +55,6 @@ TLSRequired <%= tls_required %>
 # clients will close the data connection, or there will be a timeout
 # on an idle data connection.
 #
-TLSRenegotiate <%= tls_renegotiate %>
+TLSRenegotiate <%= @tls_renegotiate %>
 </IfModule>
 

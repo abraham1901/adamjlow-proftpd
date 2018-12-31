@@ -65,17 +65,6 @@ define proftpd::mods {
       }
     }
 
-    'tls_memcache': {
-      #Crutch. There is no module mod_tls_memcache.c in
-      #official repo Ubuntu 12.04. Please check on our dist.
-
-      if (($::lsbdistrelease != '12.04' and $::lsbdistrelease != '14.04') or $enable_module ) {
-        $ensure = 'present'
-      } else {
-        $ensure = 'absent'
-      }
-    }
-
     default: {
         if $proftpd::config::modules[$name] != 'false' {
           $ensure = 'present'

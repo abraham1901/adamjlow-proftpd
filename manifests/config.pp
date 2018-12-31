@@ -64,6 +64,9 @@ class proftpd::config(
   $sql_dbname           = $proftpd::params::sql_dbname,
   $sql_username         = $proftpd::params::sql_username,
   $sql_password         = $proftpd::params::sql_password,
+  $sql_auth_types       = $proftpd::params::sql_auth_types,
+  $sql_min_user_gid     = $proftpd::params::sql_min_user_gid,
+  $sql_min_user_uid     = $proftpd::params::sql_min_user_uid,
   $sql_cfg_append       = $proftpd::params::sql_cfg_append,
 
   $ldap_engine          = $proftpd::params::ldap_engine,
